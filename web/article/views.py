@@ -7,6 +7,8 @@ from .forms import CommentForm
 from article.models import comment
 
 # Create your views here.
+def page_not_found(request,exception):
+    return render(request,'index/404.html')    
 
 def index(request):
     from article.models import article

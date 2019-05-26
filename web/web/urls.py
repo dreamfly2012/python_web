@@ -25,3 +25,5 @@ urlpatterns = [
     re_path(r'^ueditor/',include('ueditor.urls')),
     re_path(r'^media/(?P<path>.*)$', serve, {'document_root': MEDIA_ROOT})
 ]
+
+handler404 = 'article.views.page_not_found'
