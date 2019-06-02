@@ -27,6 +27,6 @@ class comment(models.Model):
     email = models.CharField(max_length=20,default='')
     content = models.TextField(max_length=5000,default='')
     date = models.DateTimeField(auto_now=True)
-
+    article = models.ForeignKey(article,on_delete=models.CASCADE,related_name='comment_article',default='')
     def __str__(self):
         return self.name

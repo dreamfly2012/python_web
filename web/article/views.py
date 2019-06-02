@@ -24,7 +24,12 @@ def opdb(request):
     #info  = article.objects.all()[2:4]
     #info = article.objects.filter(Q(title__startswith='a')|Q(author='我'))
     #info = article.objects.filter(id=1).update(content='1')
-    info = article.objects.filter(id=1).update(content=F('author'))
+    #info = article.objects.filter(id=1).update(content=F('author'))
+    #info = article.objects.order_by('-id').all()
+    #info = article.objects.order_by('id').all().reverse()
+    info = article.objects.raw('select * from article_article where id = 2')
+    #info = info.comment_article.all()
+    info = info[0].title
     print(info)
 
     return HttpResponse('Hello world')
