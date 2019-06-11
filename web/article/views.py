@@ -10,6 +10,9 @@ from article.models import article
 
 from django.db.models import Q,F
 
+import logging
+
+logger = logging.getLogger('web')
 
 def opdb(request):
     #info = article.objects.all()
@@ -39,6 +42,8 @@ def page_not_found(request,exception):
     return render(request,'index/404.html')    
 
 def index(request):
+    logger.debug('debug log')
+    logger.info('info log')
     context = {}
     context['articles'] = article.objects.filter(title='aa')
     context['form'] =  CommentForm()

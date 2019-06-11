@@ -49,8 +49,33 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'article.middleware.MyMiddleware'
+    #'article.middleware.MyMiddleware'
 ]
+
+LOGGING = {
+    'version':1,
+    'formatters':{
+        'basic':{
+            'format':'{asctime} {levelname} {message}',
+            'style':'{'
+        }
+    },
+    'handlers':{
+        'handle1':{
+            'level':'DEBUG',
+            'class':'logging.FileHandler',
+            'filename':'weblog.txt',
+            'formatter': 'basic'
+        }
+    },
+    'loggers':{
+        'web':{
+            'level':'INFO',
+            'handlers':['handle1']
+        }
+    }
+}
+
 
 ROOT_URLCONF = 'web.urls'
 
