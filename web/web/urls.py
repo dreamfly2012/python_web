@@ -17,9 +17,11 @@ from django.contrib import admin
 from django.urls import path,include,re_path
 from web.settings import MEDIA_ROOT
 from django.views.static import serve
+from article import views as article_views
 
 
 urlpatterns = [
+    path('',article_views.index),
     path('article/',include('article.urls')),
     path('admin/', admin.site.urls),
     re_path(r'^ueditor/',include('ueditor.urls')),
