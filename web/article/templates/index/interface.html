@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        内容
+    </div>
+    <button id="getinfo">获取信息</button>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        document.getElementById('getinfo').onclick = function(){
+            axios.post('/article/interface', {
+                page: '1'
+            })
+            .then(function (response) {
+                var s = response.data;
+                console.log(s)
+                var json = JSON.parse(s)
+                console.log(json)
+                console.log(json[0].fields.title)
+                console.log(json[0].fields.author);
+            })
+            .catch(function (error) {
+                console.log(error);
+            })
+        }
+    </script>
+</body>
+</html>

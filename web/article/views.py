@@ -12,6 +12,15 @@ from django.db.models import Q,F
 
 import logging
 
+
+
+
+from django.views.decorators.csrf import csrf_exempt
+from django.forms.models import model_to_dict
+from django.http import JsonResponse  
+from django.core import serializers
+
+
 logger = logging.getLogger('web')
 
 def opdb(request):
@@ -36,6 +45,21 @@ def opdb(request):
     print(info)
 
     return HttpResponse('Hello world')
+
+@csrf_exempt
+def interface(request):
+    print(request.method)
+    if(request.method=='GET'):
+        context = {}
+        return render(request, 'index/interface.html',context)
+    else:
+        context = {}
+        context['articles'] = article.objects.filter(title='aa')
+        print(context)
+        context = serializers.serialize("json",article.objects.filter(title='aa'))
+        return JsonResponse(context,safe=False)
+      
+       
 
 # Create your views here.
 def page_not_found(request,exception):

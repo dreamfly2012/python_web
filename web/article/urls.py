@@ -8,5 +8,6 @@ urlpatterns = [
    path('opdb',views.opdb,name='opdb'),
    path('show',views.show,name='show'),
    path('update',views.update,name='update'),
-   path('new',views.new,name='new')
+   path('new',views.new,name='new'),
+   path('interface',views.interface,name='interface')
 ]
