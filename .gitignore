@@ -5,3 +5,4 @@ venv
 article/__pycache__
 article/__pycache__
 media
+*.pyc
