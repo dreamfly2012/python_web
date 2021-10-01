@@ -1,3 +1,7 @@
 .idea
-/web/weblog.txt
+weblog.txt
 .vscode
+venv
+article/__pycache__
+article/__pycache__
+media
